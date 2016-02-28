@@ -1,0 +1,64 @@
+﻿@using Umbraco.Web
+@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@Model.Content.Name</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+
+</head>
+<body onload="CCPEVE.requestTrust('http://localhost:60127/')">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+
+                <a class="navbar-brand" href="/">@(Model.Content.AncestorOrSelf(EveFramework.Entities.Constants.PageSite)?.Name)</a>
+            </div>
+            <ul class="nav navbar-nav">
+
+                @{
+                    foreach (var childPage in Model.Content.Children)
+                    {
+
+                        <li><a href="@childPage.Url">@childPage.Name</a></li>
+                    }
+                }
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#">
+                        <span class="glyphicon glyphicon-user"></span>
+                        @Request.ServerVariables.Get("HEADER_EVE_CHARNAME")
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        @RenderBody()
+    </div>
+</body>
+
+
+</html>

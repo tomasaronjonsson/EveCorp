@@ -1,0 +1,22 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Site>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "_Layout.cshtml";
+}
+    <!--todo test -->
+<style>
+    #draggable {
+        width: 150px;
+        height: 150px;
+        padding: 0.5em;
+    }
+</style>
+<script>
+  $(function() {
+    $( "#draggable" ).draggable();
+  });
+</script>
+<div id="draggable" class="ui-widget-content">
+    <p>@Request.ServerVariables.Get("HTTP_EVE_SOLARSYSTEMNAME")</p>
+    <p>@Request.ServerVariables.Get("HTTP_EVE_CHARNAME") - @Request.ServerVariables.Get("HTTP_EVE_SHIPNAME")</p>
+</div>

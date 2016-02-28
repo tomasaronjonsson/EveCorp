@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EveCorp.Website", "EveCorp.Website\EveCorp.Website.csproj", "{543DCCF0-D784-411C-ADC3-A09720116CD0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EveCorp.Framework", "EveCorp.Framework\EveCorp.Framework.csproj", "{BFAFC4A1-96FE-41D7-8171-6FDA293F009E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{543DCCF0-D784-411C-ADC3-A09720116CD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{543DCCF0-D784-411C-ADC3-A09720116CD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{543DCCF0-D784-411C-ADC3-A09720116CD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{543DCCF0-D784-411C-ADC3-A09720116CD0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFAFC4A1-96FE-41D7-8171-6FDA293F009E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFAFC4A1-96FE-41D7-8171-6FDA293F009E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFAFC4A1-96FE-41D7-8171-6FDA293F009E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFAFC4A1-96FE-41D7-8171-6FDA293F009E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
