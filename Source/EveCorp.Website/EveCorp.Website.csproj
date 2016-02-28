@@ -332,6 +332,7 @@
     <Content Include="Views\Site.cshtml" />
     <Content Include="Views\ContentPage.cshtml" />
     <Content Include="Views\SiteRunning.cshtml" />
+    <Content Include="Views\SiteRun.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

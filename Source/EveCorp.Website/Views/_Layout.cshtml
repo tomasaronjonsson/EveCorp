@@ -1,4 +1,6 @@
-﻿@using Umbraco.Web
+﻿@using EveFramework.Entities.DataModels
+@using EveFramework.Services
+@using Umbraco.Web
 @inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 
 @{
@@ -28,6 +30,30 @@
 
 
 </head>
+@{
+    //lets gather data and create a data entry
+
+    if (!string.IsNullOrEmpty(Request.ServerVariables.Get("HEADER_EVE_CHARNAME")))
+    {
+
+        var characterLocationEntry = new CharacterLocationEntryDataModel
+        {
+            CharacterName = Request.ServerVariables.Get("HEADER_EVE_CHARNAME"),
+            DateTime = DateTime.Now,
+            ShipTypeName = Request.ServerVariables.Get("HTTP_EVE_SHIPTYPENAME"),
+            SolarSystemName = Request.ServerVariables.Get("HTTP_EVE_SOLARSYSTEMNAME")
+
+        };
+
+        CharacterLocationService.Instance.NewNentry(characterLocationEntry);
+
+        <p>Saving entry</p>
+    }
+
+
+}
+
+
 <body onload="CCPEVE.requestTrust('http://localhost:60127/')">
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -55,7 +81,7 @@
             </ul>
         </div>
     </nav>
-    <div class="container">
+    <div class="container-fluid">
         @RenderBody()
     </div>
 </body>

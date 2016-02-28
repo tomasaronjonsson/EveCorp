@@ -1,22 +1,57 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Site>
+@using EveFramework.Services
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
     Layout = "_Layout.cshtml";
 }
     <!--todo test -->
 <style>
-    #draggable {
+    .solarsystem {
         width: 150px;
-        height: 150px;
-        padding: 0.5em;
+        min-height: 150px;
+        padding: 1px;
     }
 </style>
 <script>
-  $(function() {
-    $( "#draggable" ).draggable();
-  });
+    $(document).ready(function () {
+        $(".draggable").draggable({
+            containment: "#map-container",
+            scroll: false,
+            stop: function (event, ui) {
+                positions[this.id] = ui.position
+                localStorage.positions = JSON.stringify(positions)
+            }});
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 </script>
-<div id="draggable" class="ui-widget-content">
-    <p>@Request.ServerVariables.Get("HTTP_EVE_SOLARSYSTEMNAME")</p>
-    <p>@Request.ServerVariables.Get("HTTP_EVE_CHARNAME") - @Request.ServerVariables.Get("HTTP_EVE_SHIPNAME")</p>
+@{
+    var mapData = MapService.Instance.GetMap();
+    var entries = CharacterLocationService.Instance.GetAllLocationEntries();
+}
+
+<p>Entries found: @entries.Count - Solarsystems found: @mapData.Count</p>
+<div id="map-container" class="ui-widget-content">
+
+    
+    @foreach (var entry in mapData)
+    {
+        <div class="draggable solarsystem">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">@entry.Name</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="list-group">
+                        @foreach (var character in entry.Characters)
+                        {
+                            <li class="list-group-item" data-toggle="tooltip" title="@character.ShipTypeName - @character.LastSeen.ToString("t") @character.LastSeen.ToString("d")">
+                                <small>@character.Name</small>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    }
+   
 </div>

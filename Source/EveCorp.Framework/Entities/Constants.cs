@@ -4,5 +4,10 @@
     {
         public const string PageSite = "site";
 
+
+
+
+
+        public const string TableCharacterLocationEntry = "CharacterLocationEntry";
     }
 }
