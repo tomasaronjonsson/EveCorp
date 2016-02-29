@@ -267,6 +267,7 @@
     <Compile Include="Entities\Constants.cs" />
     <Compile Include="Entities\DataModels\BaseDataModel.cs" />
     <Compile Include="Entities\DataModels\CharacterLocationEntryDataModel.cs" />
+    <Compile Include="Entities\DataModels\MapSolarsystemDataModel.cs" />
     <Compile Include="Entities\Viewmodels\CharacterViewModel.cs" />
     <Compile Include="Entities\Viewmodels\MapSolarsystemViewModel.cs" />
     <Compile Include="Events\Starting.cs" />
