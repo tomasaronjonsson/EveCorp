@@ -5,7 +5,7 @@ namespace EveFramework.Entities.DataModels
 {
     using System;
 
-   [TableName(Constants.TableCharacterLocationEntry)]
+    [TableName(Constants.TableCharacterLocationEntry)]
     [PrimaryKey("Id", autoIncrement = true)]
     public class CharacterLocationEntryDataModel : BaseDataModel
     {

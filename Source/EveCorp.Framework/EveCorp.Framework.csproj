@@ -183,6 +183,7 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
       <Private>True</Private>
@@ -264,15 +265,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\API\CharacterLocationController.cs" />
+    <Compile Include="Controllers\API\MapController.cs" />
     <Compile Include="Entities\Constants.cs" />
     <Compile Include="Entities\DataModels\BaseDataModel.cs" />
     <Compile Include="Entities\DataModels\CharacterLocationEntryDataModel.cs" />
-    <Compile Include="Entities\DataModels\MapSolarsystemDataModel.cs" />
     <Compile Include="Entities\Viewmodels\CharacterViewModel.cs" />
-    <Compile Include="Entities\Viewmodels\MapSolarsystemViewModel.cs" />
+    <Compile Include="Entities\Viewmodels\SolarsystemViewModel.cs" />
     <Compile Include="Events\Starting.cs" />
     <Compile Include="Interfaces\ICharacterLocationService.cs" />
-    <Compile Include="Interfaces\IMap.cs" />
+    <Compile Include="Interfaces\IMapService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CharacterLocationService.cs" />
     <Compile Include="Services\DatabaseService.cs" />

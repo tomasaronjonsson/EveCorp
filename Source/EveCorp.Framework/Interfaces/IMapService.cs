@@ -3,8 +3,8 @@ using EveFramework.Entities.Viewmodels;
 
 namespace EveFramework.Interfaces
 {
-    public interface IMap
+    public interface IMapService
     {
-        List<MapSolarsystemViewModel> GetMap();
+        List<SolarsystemViewModel> GetSolarsystemsList();
     }
 }

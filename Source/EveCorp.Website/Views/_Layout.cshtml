@@ -19,42 +19,24 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <!-- jQuery library support only .9 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
     <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
     <!-- Latest compiled JavaScript -->
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+    <!-- angular 1.2 supported by IGB -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
 
 
 
 </head>
-@{
-    //lets gather data and create a data entry
-
-    if (!string.IsNullOrEmpty(Request.ServerVariables.Get("HEADER_EVE_CHARNAME")))
-    {
-
-        var characterLocationEntry = new CharacterLocationEntryDataModel
-        {
-            CharacterName = Request.ServerVariables.Get("HEADER_EVE_CHARNAME"),
-            DateTime = DateTime.Now,
-            ShipTypeName = Request.ServerVariables.Get("HTTP_EVE_SHIPTYPENAME"),
-            SolarSystemName = Request.ServerVariables.Get("HTTP_EVE_SOLARSYSTEMNAME")
-
-        };
-
-        CharacterLocationService.Instance.NewNentry(characterLocationEntry);
-
-        <p>Saving entry</p>
-    }
 
 
-}
 
-
-<body onload="CCPEVE.requestTrust('http://localhost:60127/')">
+<body>
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -71,14 +53,17 @@
                     }
                 }
             </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#">
-                        <span class="glyphicon glyphicon-user"></span>
-                        @Request.ServerVariables.Get("HEADER_EVE_CHARNAME")
-                    </a>
-                </li>
-            </ul>
+            @if (string.IsNullOrEmpty(Request.ServerVariables.Get("HEADER_EVE_CHARNAME")))
+            {
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-user"></span>
+                            @Request.ServerVariables.Get("HEADER_EVE_CHARNAME")
+                        </a>
+                    </li>
+                </ul>
+            }
         </div>
     </nav>
     <div class="container-fluid">

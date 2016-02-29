@@ -4,10 +4,7 @@
     {
         public const string PageSite = "site";
 
-
-
-
-
         public const string TableCharacterLocationEntry = "CharacterLocationEntry";
+        public const string TableSolarSystem = "SolarSystem";
     }
 }
