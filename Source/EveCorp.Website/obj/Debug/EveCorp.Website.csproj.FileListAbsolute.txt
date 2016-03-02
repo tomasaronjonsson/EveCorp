@@ -238,3 +238,5 @@ D:\tomas\Documents\EveCorp\Source\EveCorp.Website\bin\UmbracoExamine.xml
 D:\tomas\Documents\EveCorp\Source\EveCorp.Website\obj\Debug\EveCorp.Website.csprojResolveAssemblyReference.cache
 D:\tomas\Documents\EveCorp\Source\EveCorp.Website\obj\Debug\Eve.dll
 D:\tomas\Documents\EveCorp\Source\EveCorp.Website\obj\Debug\Eve.pdb
+D:\tomas\Documents\EveCorp\Source\EveCorp.Website\bin\Autofac.dll
+D:\tomas\Documents\EveCorp\Source\EveCorp.Website\bin\Autofac.xml

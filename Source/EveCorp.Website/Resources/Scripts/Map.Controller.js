@@ -2,7 +2,7 @@
 	//create the controller
 	function mapController($scope, $http,$timeout) {
 
-		$scope.mapUpdateTimeout = 1000;
+		$scope.mapUpdateTimeout = 4000;
 
 		//ná í gögnin fyrir kortið og setja svo sjálfvirkt update í gang
 		$scope.updateSolarsystems = function() {

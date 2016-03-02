@@ -4,23 +4,38 @@
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 <script src="~/Resources/Scripts/Map.js"></script>
 <script src="~/Resources/Scripts/Map.Controller.js"></script>
+<link href="~/Resources/Styles/Styles.css" rel="stylesheet" />
+<link href="~/Resources/Styles/Map.css" rel="stylesheet" />
+<!-- to make the connection between the maps-->
 @{
     Layout = "_Layout.cshtml";
 }
 <!--todo test -->
 <style>
-    .solarsystem {
-        width: 150px;
-        min-height: 150px;
-        padding: 1px;
-    }
+
 </style>
 
 <script>
+    var n = new Notification();
+
+    if (!window.Notifications) {
+        $('#message').removeClass()
+        .addClass("alert alert-error")
+        .text("Your browser does not support the Notification API please use Chrome for the demo.");
+
+        $('#notification_demo').hide();
+    }
+    else {
+        $('#message').removeClass()
+        .addClass("alert alert-success")
+        .text("Your browser does support the Notification API.");
+    }
+
+
     //biðja um traust!
     CCPEVE.requestTrust('http://localhost:60127/')
 
-    var characterLocationUpdateTimeout = 1000;
+    var characterLocationUpdateTimeout = 4000;
 
     //update the map location to the C# controller
     function updateCharacterLocation() {
@@ -34,45 +49,17 @@
     //setja update i gang
     updateCharacterLocation();
 </script>
-
-
-@*@{
-        var mapData = MapService.Instance.GetSolarsystemsList();
-    }
-    <div id="map-container2" class="container-fluid ui-widget-content">
-        @foreach (var entry in mapData)
-        {
-            <div class="draggable solarsystem">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">@entry.Name</h3>
-                    </div>
-                    <div class="panel-body">
-                        <ul class="list-group">
-                            @foreach (var character in entry.Characters)
-                            {
-                                <li class="list-group-item">
-                                    <small>@character.Name</small>
-                                </li>
-                            }
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        }
-
-    </div>*@
 <div id="map-container" init="updateSolarsystems()" class="container-fluid ui-widget-content" ng-app="eveMap" ng-controller="mapController">
 
-    <div class="draggable solarsystem" ng-repeat="solarsystem in solarsystems">
+    <div id="{{solarsystem.Name}}" class="draggable solarsystem" ng-repeat="solarsystem in solarsystems">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">{{solarsystem.Name}}</h3>
             </div>
             <div class="panel-body">
                 <ul class="list-group">
-                    <li class="list-group-item" ng-repeat="character in solarsystem.Characters">
-                        <small data-toggle="tooltip" title="{{character.ShipTypeName}} - {{ character.LastSeen}}">{{character.Name}}</small>
+                    <li data-toggle="tooltip" title="{{character.ShipTypeName}} - {{ character.LastSeen}}" class="list-group-item" ng-repeat="character in solarsystem.Characters">
+                        <small>{{character.Name}}</small>
                     </li>
                 </ul>
 
@@ -80,3 +67,4 @@
         </div>
     </div>
 </div>
+<div id="message"> staða</div>

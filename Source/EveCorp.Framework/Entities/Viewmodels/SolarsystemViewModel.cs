@@ -17,7 +17,9 @@ namespace EveFramework.Entities.Viewmodels
 
         public List<CharacterViewModel> Characters { get; set; }
 
-        public double LocationString { get; set; }
+        public double Y { get; set; }
+        public double X { get; set; }
+
         public DateTime CreateDateTime { get; set; }
     }
 }

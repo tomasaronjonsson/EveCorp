@@ -7,9 +7,14 @@ $(document).ready(function () {
     $(".draggable").draggable({
         containment: "#map-container",
         scroll: false,
-        stop: function (event, ui) {
-            positions[this.id] = ui.position;
-            localStorage.positions = JSON.stringify(positions);
+        stop: function(event, ui) {
+            var pos_x = ui.offset.left;
+            var pos_y = ui.offset.top;
+            var id = ui.id;
+
+            $http.get("/Umbraco/Api/Map/UpdateSolarsystemLocation", {
+                params: { name: id, x: pos_x, y: pos_y }
+            });
         }
     });
 
